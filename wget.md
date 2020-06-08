@@ -1,143 +1,25 @@
-# wget
-
-download a single file
-    wget http://www.example.com/index.html
-
-download file and save it as download.html
-    wget -O download.html http://www.example.com/index.html
-
-download a page with all resources for offline viewing
-    wget -EHkKp http://www.example.com
-
-download a file only if it is newer than a local version
-    wget -N http://www.example.com/index.html
-
-get files up to two pages deep with names ending in png but not containing foo
-    wget -r 2 -A png -R "*foo*" http://www.example.com
-
-
-# Basic Usage
-
-Download a file:
-    wget <url>
-
-
-# Download a Site for Offline Viewing
-
-There are numerous ways to try and get `wget` to download a website for offline
-viewing. One of the more robust is the combination of flags `-EHkKp`. Though
-verbose, the command is recommended by the `wget` manual. Note that this will
-only make the top-level page suitable for offline viewing, not all the pages
-it links to. It converts pages to html from dynamically generated pages like
-.asp or .php (`-E`), allows the request to access multiple hosts to satisfy
-resource requirements (`-H`), converts resource links to paths appropriate for
-local viewing (`-k`), creates files with .orig suffixes if conversions were
-performed (`-K`), and gets embedded resources (`-p`):
-    wget -EHkKp http://www.example.com
-
-To make an entire site viewable offline, add the `-m` flag, which stands for
-mirroring, and allows recursion to infinite depth. If this is allowed to span
-hosts (`-H`) it can generate a huge number of requests. It should always be
-used carefully. This will download an entire site (`-m`) in a way suitable for
-offline viewing (`-EkKp`) without spanning hosts:
-    wget -EkKpm http://www.example.com
-
-`wget` tries to be a good citizen and respects `/robots.txt`, which can prevent
-some resources from being downloaded. The following command will disregard
-`/robots.txt` (`-e robots=off`) and potentially download a more complete page:
-    wget -EHkKp -e robots=off http://www.example.com
-
-Such commands can issue a large number of requests that may impact the server.
-This command will wait on average 20 seconds (`--wait=10`) between requests and
-limit bandwidth usage to 15k (`--limit-rate=15k`):
-    wget -EHkKp --wait=10 --limit-rate=15k http://www.example.com
-
-
-# Inspecting Websites
-
-See if a file exists at the URL, but download nothing (`--spider`):
-    wget --spider http://www.example.com/index.html
-
-Look for broken links (`--spider`) anywhere on a site by following all the
-links on the page recursively (`-r`):
-    wget -r --spider http://www.example.com
-
-Save cookies to a file (`--save-cookies cookies.txt`) and save session cookies
-(`--keep-session-cookies`):
-    wget --save-cookies cookies.txt --keep-session-cookies www.google.com
-
 # wget                                                                                        
                                                                                               
-  Download files from the Web.                                                                
-  Supports HTTP, HTTPS, and FTP.                                                              
-  More information: <https://www.gnu.org/software/wget>.                                      
-                                                                                              
-- Download the contents of an URL to a file (named "foo" in this case):                       
-                                                                                              
-  wget https://example.com/foo                                                                
-                                                                                              
-- Download the contents of an URL to a file (named "bar" in this case):                       
-                                                                                              
-  wget -O bar https://example.com/foo                                                         
-                                                                                              
-- Download a single web page and all its resources with 3-second intervals between requests (scripts, stylesheets, images, etc.):
-                                                                                              
-  wget --page-requisites --convert-links --wait=3 https://example.com/somepage.html           
-                                                                                              
-- Download all listed files within a directory and its sub-directories (does not download embedded page elements):
-                                                                                              
-  wget --mirror --no-parent https://example.com/somepath/                                     
-                                                                                              
-- Limit the download speed and the number of connection retries:                              
-                                                                                              
-  wget --limit-rate=300k --tries=100 https://example.com/somepath/                            
-                                                                                              
-- Download a file from an HTTP server using Basic Auth (also works for FTP):                  
-                                                                                              
-  wget --user=username --password=password https://example.com                                
-                                                                                              
-- Continue an incomplete download:                                                            
-                                                                                              
-  wget -c https://example.com                                                                 
-                                                                                              
-- Download all URLs stored in a text file to a specific directory:                            
-                                                                                              
-  wget -P path/to/directory -i URLs.txt                                                       
-                                                                                              
-                                                                                              
-                                                                                              
-# To download <url>:
-wget <url>
-#
-# To download multiples files with multiple URLs:
-wget <url>...
+Download files from the Web.                                                                               
+                                                                                         
+# To download a URL:
 
-# To download <url> and change its name:
-wget <url> -O <outfile>
+```wget <url>```
 
-# To download <url> into <dir>:
-wget -P <dir> <url>
+# To continue an aborted download:
 
-# To continue an aborted downloaded:
-wget -c <url>
+```wget -c <url>```
 
-# To parse a file that contains a list of URLs to fetch each one:
-wget -i url_list.txt
 
-# To mirror a whole page locally:
-wget -pk <url>
+# Examples:
 
-# To mirror a whole site locally:
-wget -mk <url>
+```
+wget https://google.com/index.html
 
-# To download files according to a pattern:
-wget http://example.com/files-{1..15}.tar.bz2
+```
 
-# To download all the files in a directory with a specific extension if directory indexing is enabled:
-wget -r -l1 -A.extension http://example.com/directory
+# Interview questions:
 
-# To download only response headers (-S --spider) and display them on stdout (-O -).:
-wget -S --spider -O - <url>
+**Question:** How do you download something?
 
-# To change the User-Agent to 'User-Agent: toto':
-wget -U 'toto' <url>
+**Answer:** You run the command `wget` and give it a website to download.
