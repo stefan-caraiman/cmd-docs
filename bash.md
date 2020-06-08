@@ -22,7 +22,7 @@ Bash is the default **shell/terminal** on most Linux distributions.
 ## To implement a for loop:
 
 ```
-for file in ls;
+for file in $(ls);
 do 
     echo "$file found";
 done

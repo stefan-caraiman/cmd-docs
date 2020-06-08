@@ -1,6 +1,6 @@
 # cat
 
-Print and concatenate/combine files.
+Can be used to print/show and concatenate/combine files.
 
 # Basic Usage
 

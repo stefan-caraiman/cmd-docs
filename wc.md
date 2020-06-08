@@ -1,6 +1,6 @@
 # wc
 
-**Word Count**, count lines, words or letters in a file.
+**W**ord **C**ount -> count lines, words or letters in a file.
 
 # Basic Usage
 
