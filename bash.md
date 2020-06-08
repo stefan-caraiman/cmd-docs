@@ -1,64 +1,37 @@
-No entry found for bash. Run `eg --list` to see all available entries.
 # bash                                                                                        
                                                                                               
-  Bourne-Again SHell.                                                                         
-  `sh`-compatible command line interpreter.                                                   
-  More information: <https://gnu.org/software/bash>.                                          
+Bourne-Again SHell - BASH is a Linux shell and a scripting language.       
+
+Bash is the default **shell/terminal** on most Linux distributions.
+
+# Basic Usage
+
+## Start a Bash shell:                                                                    
                                                                                               
-- Start interactive shell:                                                                    
+`bash`                                                                                     
                                                                                               
-  bash                                                                                        
+## Execute a command:                                                                          
                                                                                               
-- Execute a command:                                                                          
+`bash -c "command"`                                                                   
                                                                                               
-  bash -c "command"                                                                           
+## Run commands from a file:                                                                   
                                                                                               
-- Run commands from a file:                                                                   
-                                                                                              
-  bash file.sh                                                                                
-                                                                                              
-- Run commands from a file, logging all commands executed to the terminal:                    
-                                                                                              
-  bash -x file.sh                                                                             
-                                                                                              
-- Run commands from a file, stopping at the first error:                                      
-                                                                                              
-  bash -e file.sh                                                                             
-                                                                                              
-- Run commands from `stdin`:                                                                  
-                                                                                              
-  bash -s                                                                                     
-                                                                                              
-- Print the version information of bash (use `echo $BASH_VERSION` to show just the version string):
-                                                                                              
-  bash --version                                                                              
-                                                                                              
-                                                                                              
-                                                                                              
-# To implement a for loop:
-for file in *;
+`bash file.sh`                                                                           
+
+
+## To implement a for loop:
+
+```
+for file in ls;
 do 
-    echo $file found;
+    echo "$file found";
 done
+```
 
-# To implement a case command:
-case "$1"
-in
-    0) echo "zero found";;
-    1) echo "one found";;
-    2) echo "two found";;
-    3*) echo "something beginning with 3 found";;
-esac
+## To turn on debugging and see what commands run in a bash script:
 
-# To turn on debugging:
-set -x
+`set -x`
 
-# To turn off debugging:
-set +x
+## To turn off debugging in bash:
 
-# Retrieve N-th piped command exit status:
-printf 'foo' | fgrep 'foo' | sed 's/foo/bar/'
-echo ${PIPESTATUS[0]}  # replace 0 with N
-
-# To create a lockfile:
-( set -o noclobber; echo > my.lock ) || echo 'Failed to create lock file'
+`set +x`

@@ -1,52 +1,22 @@
 # cd
 
-change do target-directory
-    cd target-directory
-
-change to home directory
-    cd ~
-
-change to previous directory
-    cd -
-
+**Change Directory** - Change/move to another directory
 
 # Basic Usage
 
-Change your current working directory to the target directory:
-    $ cd <target-directory>
-    $ pwd
-    <target-directory>
+## Go to the given directory
 
-# cd                                                                                          
-                                                                                              
-  Change the current working directory.                                                       
-                                                                                              
-- Go to the given directory:                                                                  
-                                                                                              
-  cd path/to/directory                                                                        
-                                                                                              
-- Go to home directory of current user:                                                       
-                                                                                              
-  cd                                                                                          
-                                                                                              
-- Go up to the parent of the current directory:                                               
-                                                                                              
-  cd ..                                                                                       
-                                                                                              
-- Go to the previously chosen directory:                                                      
-                                                                                              
-  cd -                                                                                        
-                                                                                              
-                                                                                              
-                                                                                              
-#Go to the given directory
-cd path/to/directory
+`cd path/to/directory`
 
-#Go to home directory of current user
-cd
+## change to home directory
 
-#Go up to the parent of the current directory
-cd ..
+`cd ~`
 
-#Go to the previously chosen directory
-cd -
+## change to previous directory
+
+`cd -`
+
+## Go back one folder:
+
+`cd ..`
+
